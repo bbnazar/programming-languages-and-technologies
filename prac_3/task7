@@ -1,0 +1,23 @@
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.__balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f"Счёт пополнен на {amount}")
+        else:
+            print("Сумма должна быть положительной")
+
+    def get_balance(self):
+        return self.__balance
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Сумма должна быть положительной")
+        elif amount > self.__balance:
+            print("Недостаточно средств")
+        else:
+            self.__balance -= amount
+            print(f"Снято: {amount}")

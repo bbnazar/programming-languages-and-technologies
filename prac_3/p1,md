@@ -1,0 +1,188 @@
+ОТЧЁТ
+по практической работе на тему «Классы, объекты и инкапсуляция»
+Цель работы
+
+Изучить создание классов и объектов в языке Python, научиться использовать атрибуты и методы классов, а также применять инкапсуляцию для защиты данных объектов.
+
+Задание №1. Базовый класс Student
+Условие
+
+Создать класс Student, содержащий имя, возраст и специальность. Реализовать вывод информации о студенте и возможность изменения специальности.
+
+Программный код
+class Student:
+    def __init__(self, name, age, specialty):
+        self.name = name
+        self.age = age
+        self.specialty = specialty
+
+    def show_info(self):
+        print(f"Имя: {self.name}")
+        print(f"Возраст: {self.age}")
+        print(f"Специальность: {self.specialty}")
+
+    def change_specialty(self, new_specialty):
+        self.specialty = new_specialty
+
+
+student = Student("Иван", 20, "Программирование")
+
+student.show_info()
+
+student.change_specialty("Информационные технологии")
+
+print("\nПосле изменения специальности:")
+student.show_info()
+
+Результат работы
+Имя: Иван
+Возраст: 20
+Специальность: Программирование
+
+После изменения специальности:
+Имя: Иван
+Возраст: 20
+Специальность: Информационные технологии
+
+Вывод по заданию №1
+
+В ходе выполнения задания был создан класс Student. Были реализованы атрибуты имени, возраста и специальности. С помощью метода show_info() программа выводит информацию о студенте, а метод change_specialty() позволяет изменить его специальность.
+
+Задание №7. Класс BankAccount
+Условие
+
+Создать класс BankAccount, содержащий владельца и закрытый атрибут __balance. Реализовать пополнение счёта, получение баланса и снятие денежных средств.
+
+Программный код
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.__balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f"Счёт пополнен на {amount}")
+        else:
+            print("Сумма должна быть положительной")
+
+    def get_balance(self):
+        return self.__balance
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Сумма должна быть положительной")
+        elif amount > self.__balance:
+            print("Недостаточно средств")
+        else:
+            self.__balance -= amount
+            print(f"Снято: {amount}")
+
+
+account = BankAccount("Иван", 10000)
+
+print("Владелец:", account.owner)
+print("Баланс:", account.get_balance())
+
+account.deposit(5000)
+print("Баланс:", account.get_balance())
+
+account.withdraw(3000)
+print("Баланс:", account.get_balance())
+
+account.withdraw(20000)
+
+Результат работы
+Владелец: Иван
+Баланс: 10000
+Счёт пополнен на 5000
+Баланс: 15000
+Снято: 3000
+Баланс: 12000
+Недостаточно средств
+
+Вывод по заданию №7
+
+В данном задании был создан банковский счёт с владельцем и закрытым балансом __balance. Для изменения баланса используются специальные методы deposit() и withdraw(). Метод get_balance() позволяет получить текущий баланс. Также предусмотрена проверка, чтобы нельзя было снять сумму, превышающую имеющиеся средства.
+
+Задание №16. Класс ATMAccount
+Условие
+
+Создать класс ATMAccount с закрытыми атрибутами баланса и PIN-кода. Реализовать проверку PIN, просмотр баланса, пополнение и снятие денежных средств.
+
+Программный код
+class ATMAccount:
+    def __init__(self, owner, balance, pin):
+        self.owner = owner
+        self.__balance = balance
+        self.__pin = pin
+
+    def check_pin(self, pin):
+        return pin == self.__pin
+
+    def get_balance(self, pin):
+        if self.check_pin(pin):
+            return self.__balance
+
+        print("Неверный PIN")
+        return None
+
+    def deposit(self, pin, amount):
+        if not self.check_pin(pin):
+            print("Неверный PIN")
+            return
+
+        if amount > 0:
+            self.__balance += amount
+            print(f"Счёт пополнен на {amount}")
+        else:
+            print("Сумма должна быть положительной")
+
+    def withdraw(self, pin, amount):
+        if not self.check_pin(pin):
+            print("Неверный PIN")
+            return
+
+        if amount <= 0:
+            print("Сумма должна быть положительной")
+        elif amount > self.__balance:
+            print("Недостаточно средств")
+        else:
+            self.__balance -= amount
+            print(f"Снято: {amount}")
+
+
+account = ATMAccount("Иван", 10000, "1234")
+
+print("PIN верный:", account.check_pin("1234"))
+
+print("Баланс:", account.get_balance("1234"))
+
+account.deposit("1234", 5000)
+print("Баланс:", account.get_balance("1234"))
+
+account.withdraw("1234", 3000)
+print("Баланс:", account.get_balance("1234"))
+
+account.withdraw("0000", 1000)
+
+Результат работы
+PIN верный: True
+Баланс: 10000
+Счёт пополнен на 5000
+Баланс: 15000
+Снято: 3000
+Баланс: 12000
+Неверный PIN
+
+Вывод по заданию №16
+
+В результате был создан класс ATMAccount, имитирующий работу банковского счёта через банкомат. Баланс и PIN-код объявлены закрытыми с помощью двойного подчёркивания: __balance и __pin. Перед выполнением операций производится проверка PIN-кода. Это позволяет защитить данные счёта от прямого доступа.
+
+Общий вывод
+
+В ходе практической работы были изучены основные принципы объектно-ориентированного программирования в Python. Были созданы классы Student, BankAccount и ATMAccount.
+
+На примере Student была изучена работа с атрибутами и методами объекта. В классе BankAccount была применена инкапсуляция с использованием закрытого атрибута __balance. В классе ATMAccount дополнительно реализована защита PIN-кода и проверка доступа перед выполнением банковских операций.
+
+Таким образом, были закреплены навыки создания классов, объектов, методов и использования закрытых атрибутов в Python.

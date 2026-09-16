@@ -1,0 +1,38 @@
+class ATMAccount:
+    def __init__(self, owner, balance, pin):
+        self.owner = owner
+        self.__balance = balance
+        self.__pin = pin
+
+    def check_pin(self, pin):
+        return pin == self.__pin
+
+    def get_balance(self, pin):
+        if self.check_pin(pin):
+            return self.__balance
+        print("Неверный PIN")
+        return None
+
+    def deposit(self, pin, amount):
+        if not self.check_pin(pin):
+            print("Неверный PIN")
+            return
+
+        if amount > 0:
+            self.__balance += amount
+            print(f"Счёт пополнен на {amount}")
+        else:
+            print("Сумма должна быть положительной")
+
+    def withdraw(self, pin, amount):
+        if not self.check_pin(pin):
+            print("Неверный PIN")
+            return
+
+        if amount <= 0:
+            print("Сумма должна быть положительной")
+        elif amount > self.__balance:
+            print("Недостаточно средств")
+        else:
+            self.__balance -= amount
+            print(f"Снято: {amount}")
