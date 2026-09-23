@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ товара</title>
+    <link rel="stylesheet" href="C:\Users\Student\Desktop\programming-languages-and-technologies\prac_4\task8\style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Заказ товара</h1>
+
+    <form id="orderForm">
+
+        <div class="form-group">
+            <label for="product">Товар:</label>
+            <select id="product">
+                <option value="">Выберите товар</option>
+                <option value="25000">Смартфон — 25 000 ₸</option>
+                <option value="15000">Наушники — 15 000 ₸</option>
+                <option value="8000">Клавиатура — 8 000 ₸</option>
+                <option value="5000">Мышь — 5 000 ₸</option>
+            </select>
+            <span class="error" id="productError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Количество:</label>
+            <input type="number" id="quantity" min="1" value="1">
+            <span class="error" id="quantityError"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Способ доставки:</label>
+
+            <label class="radio-label">
+                <input type="radio" name="delivery" value="0">
+                Самовывоз — бесплатно
+            </label>
+
+            <label class="radio-label">
+                <input type="radio" name="delivery" value="1500">
+                Курьер — 1 500 ₸
+            </label>
+
+            <label class="radio-label">
+                <input type="radio" name="delivery" value="3000">
+                Экспресс-доставка — 3 000 ₸
+            </label>
+
+            <span class="error" id="deliveryError"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Дополнительные услуги:</label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" name="service" value="1000">
+                Подарочная упаковка — 1 000 ₸
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" name="service" value="2000">
+                Расширенная гарантия — 2 000 ₸
+            </label>
+        </div>
+
+        <button type="submit">Оформить заказ</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

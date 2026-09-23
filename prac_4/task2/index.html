@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма обратной связи</title>
+    <link rel="stylesheet" href="C:\Users\Student\Desktop\programming-languages-and-technologies\prac_4\task2\style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Форма обратной связи</h1>
+
+    <form id="feedbackForm">
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" placeholder="Введите ваше имя">
+            <span class="error" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="topic">Тема сообщения:</label>
+            <select id="topic">
+                <option value="">Выберите тему</option>
+                <option value="Вопрос">Вопрос</option>
+                <option value="Предложение">Предложение</option>
+                <option value="Жалоба">Жалоба</option>
+                <option value="Другое">Другое</option>
+            </select>
+            <span class="error" id="topicError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Текст сообщения:</label>
+            <textarea id="message" rows="6"
+                      placeholder="Введите ваше сообщение"></textarea>
+            <div class="counter">
+                Символов: <span id="counter">0</span>
+            </div>
+            <span class="error" id="messageError"></span>
+        </div>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
