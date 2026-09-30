@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Электронный журнал</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Электронный журнал</h2>
+
+    <button id="showJournal">Показать журнал</button>
+
+    <table id="journal">
+        <thead>
+            <tr>
+                <th>Студент</th>
+                <th>Оценка 1</th>
+                <th>Оценка 2</th>
+                <th>Оценка 3</th>
+                <th>Средний балл</th>
+            </tr>
+        </thead>
+
+        <tbody id="journalBody"></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
