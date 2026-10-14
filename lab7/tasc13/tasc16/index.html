@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронный журнал</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Электронный журнал группы</h1>
+        <nav>
+            <button class="nav-btn active" data-page="students">Студенты</button>
+            <button class="nav-btn" data-page="grades">Оценки</button>
+            <button class="nav-btn" data-page="stats">Статистика</button>
+        </nav>
+    </header>
+    <main id="content" aria-live="polite"></main>
+    <script src="app.js" defer></script>
+</body>
+</html>

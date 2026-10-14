@@ -1,0 +1,11 @@
+body { font-family: sans-serif; margin: 0; padding: 20px; background: #f4f6f9; color: #333; }
+header { text-align: center; margin-bottom: 30px; }
+nav { display: flex; justify-content: center; gap: 10px; }
+button { padding: 10px 20px; border: 1px solid #0056b3; background: #fff; color: #0056b3; cursor: pointer; border-radius: 4px; }
+button.active, button:hover { background: #0056b3; color: #fff; }
+#content { max-width: 700px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+form { display: flex; gap: 10px; margin-bottom: 20px; }
+input, select { padding: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; flex: 1; }
+ul { list-style: none; padding: 0; }
+li { padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+.stat-box { font-size: 18px; margin: 15px 0; font-weight: bold; }
