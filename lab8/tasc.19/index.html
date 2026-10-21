@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вариант 19: Личный бюджет</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Личный бюджет</h1>
+
+        <!-- Статистика / Сводка -->
+        <div class="summary-box">
+            <div>Доходы: <span id="total-income" class="income-text">0</span> ₸</div>
+            <div>Расходы: <span id="total-expense" class="expense-text">0</span> ₸</div>
+            <div>Баланс: <span id="total-balance">0</span> ₸</div>
+        </div>
+        
+        <!-- Форма операции -->
+        <form id="budget-form" class="form-box">
+            <input type="hidden" id="edit-id">
+            <select id="type-select">
+                <option value="income">Доход</option>
+                <option value="expense">Расход</option>
+            </select>
+            <input type="text" id="category-input" placeholder="Категория" required>
+            <input type="number" id="amount-input" placeholder="Сумма" min="1" required>
+            <button type="submit" id="submit-btn">Добавить</button>
+            <button type="button" id="cancel-btn" style="display:none; background:#6c757d;">Отмена</button>
+        </form>
+
+        <!-- Таблица транзакций -->
+        <h2>История операций</h2>
+        <ul id="transaction-list"></ul>
+    </div>
+</body>
+</html>

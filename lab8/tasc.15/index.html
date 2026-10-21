@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вариант 15: Каталог фильмов</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Каталог фильмов</h1>
+        
+        <!-- Форма добавления -->
+        <form id="movie-form" class="form-box">
+            <input type="text" id="title-input" placeholder="Название фильма" required>
+            <input type="text" id="genre-input" placeholder="Жанр" required>
+            <input type="number" id="rating-input" placeholder="Рейтинг (0-10)" min="0" max="10" step="0.1" required>
+            <button type="submit">Добавить</button>
+        </form>
+
+        <!-- Блок фильтрации -->
+        <div class="filter-box">
+            <input type="text" id="filter-genre" placeholder="Фильтр по жанру">
+        </div>
+
+        <!-- Список фильмов -->
+        <ul id="movie-list"></ul>
+    </div>
+</body>
+</html>

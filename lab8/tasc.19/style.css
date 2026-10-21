@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f3;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    max-width: 650px;
+    width: 100%;
+}
+.summary-box {
+    display: flex;
+    justify-content: space-between;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.income-text { color: #28a745; }
+.expense-text { color: #dc3545; }
+.form-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.form-box * { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+select, #amount-input { flex: 1; }
+#category-input { flex: 2; }
+button[type="submit"] { background: #28a745; color: white; border: none; cursor: pointer; }
+ul { list-style: none; padding: 0; }
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+.actions { display: flex; gap: 5px; }
+.edit-btn { background: #ffc107; color: #212529; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;}
+.del-btn { background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;}
