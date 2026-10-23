@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог мероприятий университета</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #202b40;
+}
+
+header {
+  background: #173b70;
+  color: white;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+header p {
+  color: #dce8ff;
+}
+
+main {
+  max-width: 1050px;
+  margin: 25px auto;
+  padding: 0 16px;
+}
+
+.filters, .registration, .event {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 3px 12px #172c4810;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+button {
+  background: #2456a6;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #173b70;
+}
+
+button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.event h3 {
+  margin-top: 8px;
+}
+
+.category {
+  color: #2456a6;
+  font-weight: bold;
+}
+
+.meta {
+  color: #536178;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.registration {
+  margin-top: 24px;
+}
+
+form {
+  display: grid;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.message {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.success {
+  color: #187548;
+}
+
+.error {
+  color: #b42318;
+}
+
+.count {
+  font-size: 14px;
+  color: #536178;
+}
+
+@media (max-width: 650px) {
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Каталог мероприятий университета</h1>
+  <p>Находите события, развивайтесь и участвуйте!</p>
+</header>
+
+<main>
+  <h2>Предстоящие мероприятия</h2>
+
+  <section class="filters">
+    <input
+      id="search"
+      placeholder="Поиск по названию..."
+    >
+
+    <select id="category">
+      <option value="">Все категории</option>
+      <option>Наука</option>
+      <option>Образование</option>
+      <option>Культура</option>
+      <option>Спорт</option>
+    </select>
+
+    <input
+      id="dateFilter"
+      type="date"
+      aria-label="Фильтр по дате"
+    >
+  </section>
+
+  <section class="events" id="events"></section>
+
+  <section class="registration">
+    <h2>Регистрация участника</h2>
+
+    <p id="selected">
+      Сначала выберите мероприятие.
+    </p>
+
+    <form id="form">
+      <input
+        id="name"
+        placeholder="Ваше имя"
+        required
+        minlength="2"
+        maxlength="60"
+      >
+
+      <input
+        id="email"
+        type="email"
+        placeholder="Электронная почта"
+        required
+        maxlength="254"
+      >
+
+      <button type="submit">
+        Зарегистрироваться
+      </button>
+    </form>
+
+    <p
+      id="message"
+      class="message"
+      role="status"
+      aria-live="polite"
+    ></p>
+  </section>
+</main>
+
+<script>
+const events = [
+  {
+    id: 1,
+    title: "Научная конференция",
+    category: "Наука",
+    date: "2026-11-05",
+    place: "Главный корпус, зал 201",
+    description: "Презентация студенческих исследований.",
+    capacity: 50,
+    participants: []
+  },
+  {
+    id: 2,
+    title: "Мастер-класс по программированию",
+    category: "Образование",
+    date: "2026-11-12",
+    place: "IT-лаборатория",
+    description: "Практика разработки веб-приложений.",
+    capacity: 25,
+    participants: []
+  },
+  {
+    id: 3,
+    title: "Фестиваль студенческого творчества",
+    category: "Культура",
+    date: "2026-11-20",
+    place: "Актовый зал",
+    description: "Музыка, искусство и выступления студентов.",
+    capacity: 100,
+    participants: []
+  },
+  {
+    id: 4,
+    title: "Университетский турнир",
+    category: "Спорт",
+    date: "2026-12-03",
+    place: "Спортивный комплекс",
+    description: "Соревнования между факультетами.",
+    capacity: 40,
+    participants: []
+  }
+];
+
+let selectedId = null;
+
+const $ = id => document.getElementById(id);
+
+// Отображение и фильтрация мероприятий
+function render() {
+  const query = $("search").value
+    .trim()
+    .toLocaleLowerCase("ru");
+
+  const category = $("category").value;
+  const date = $("dateFilter").value;
+
+  const filtered = events.filter(e =>
+    e.title.toLocaleLowerCase("ru").includes(query) &&
+    (!category || e.category === category) &&
+    (!date || e.date === date)
+  );
+
+  $("events").innerHTML = "";
+
+  if (!filtered.length) {
+    $("events").textContent =
+      "Мероприятия не найдены.";
+    return;
+  }
+
+  filtered.forEach(e => {
+    const card = document.createElement("article");
+    card.className = "event";
+
+    const title = document.createElement("h3");
+    title.textContent = e.title;
+
+    const cat = document.createElement("p");
+    cat.className = "category";
+    cat.textContent = e.category;
+
+    const description = document.createElement("p");
+    description.textContent = e.description;
+
+    const meta = document.createElement("p");
+    meta.className = "meta";
+    meta.textContent =
+      `Дата: ${e.date} | Место: ${e.place}`;
+
+    const count = document.createElement("p");
+    count.className = "count";
+    count.textContent =
+      `Участников: ${e.participants.length} / ${e.capacity}`;
+
+    const btn = document.createElement("button");
+
+    btn.textContent = selectedId === e.id
+      ? "Выбрано"
+      : "Выбрать мероприятие";
+
+    btn.disabled = e.participants.length >= e.capacity;
+
+    btn.addEventListener("click", () => {
+      selectedId = e.id;
+
+      $("selected").textContent =
+        "Выбрано: " + e.title;
+
+      $("message").textContent = "";
+
+      render();
+    });
+
+    card.append(
+      title,
+      cat,
+      description,
+      meta,
+      count,
+      btn
+    );
+
+    $("events").append(card);
+  });
+}
+
+// Обработка поиска и фильтров
+["search", "category", "dateFilter"].forEach(id => {
+  $(id).addEventListener("input", render);
+});
+
+// Регистрация участника
+$("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = $("name").value.trim();
+  const email = $("email").value.trim().toLowerCase();
+  const msg = $("message");
+
+  function fail(text) {
+    msg.className = "message error";
+    msg.textContent = text;
+  }
+
+  if (!selectedId) {
+    fail("Выберите мероприятие перед регистрацией.");
+    return;
+  }
+
+  if (name.length < 2 || name.length > 60) {
+    fail("Имя должно содержать от 2 до 60 символов.");
+    return;
+  }
+
+  if (/[<>]/.test(name)) {
+    fail("Имя содержит недопустимые символы.");
+    return;
+  }
+
+  if (
+    email.length > 254 ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  ) {
+    fail("Введите корректный адрес электронной почты.");
+    return;
+  }
+
+  const e = events.find(e => e.id === selectedId);
+
+  if (e.participants.some(p => p.email === email)) {
+    fail("Вы уже зарегистрированы на это мероприятие.");
+    return;
+  }
+
+  if (e.participants.length >= e.capacity) {
+    fail("Свободных мест больше нет.");
+    return;
+  }
+
+  e.participants.push({
+    name: name,
+    email: email
+  });
+
+  msg.className = "message success";
+  msg.textContent =
+    `Регистрация подтверждена: ${name}!`;
+
+  this.reset();
+  render();
+});
+
+// Первоначальный вывод каталога
+render();
+</script>
+
+</body>
+</html>
