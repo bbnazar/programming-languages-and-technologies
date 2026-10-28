@@ -1,0 +1,15 @@
+body { font-family: Arial, sans-serif; max-width: 700px; margin: 30px auto; padding: 0 16px; }
+label { display: block; margin-bottom: 6px; color: #555; }
+input { width: 100%; box-sizing: border-box; padding: 10px; font-size: 16px; }
+.controls { margin: 10px 0; }
+button { padding: 8px 14px; cursor: pointer; }
+#status { min-height: 1.4em; font-weight: bold; }
+#status.waiting { color: #666; }
+#status.loading { color: #b8860b; }
+#status.success { color: #2e7d32; }
+#status.error { color: #c62828; }
+#stats { color: #555; font-size: 14px; }
+ul { list-style: none; padding: 0; }
+li { margin: 8px 0; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; }
+li .title { font-weight: bold; }
+li .body { margin: 4px 0 0; color: #555; font-size: 14px; }
