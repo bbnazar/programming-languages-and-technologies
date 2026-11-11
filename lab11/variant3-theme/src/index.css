@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 16px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.desc {
+  margin: 0 0 24px;
+  color: #64748b;
+}
+
+.box {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #0ea5e9;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0284c7;
+}
+
+button:disabled {
+  background: #cbd5e1;
+  cursor: default;
+}
+
+.btn-light {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.btn-light:hover {
+  background: #cbd5e1;
+}
+
+/* ---- вариант 3 ---- */
+.switch-title {
+  margin-top: 0;
+}
+
+.theme-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.theme-btn {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.theme-btn:hover {
+  background: #cbd5e1;
+}
+
+.theme-btn.active {
+  background: #0ea5e9;
+  color: white;
+}
+
+.preview {
+  padding: 30px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.preview h2 {
+  margin-top: 0;
+}
+
+.preview-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+}
+
+.switch-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  color: #64748b;
+}

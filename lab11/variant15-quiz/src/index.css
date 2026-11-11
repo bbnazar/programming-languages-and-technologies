@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 16px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.desc {
+  margin: 0 0 24px;
+  color: #64748b;
+}
+
+.box {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #0ea5e9;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0284c7;
+}
+
+button:disabled {
+  background: #cbd5e1;
+  cursor: default;
+}
+
+.btn-light {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.btn-light:hover {
+  background: #cbd5e1;
+}
+
+/* ---- вариант 15 ---- */
+.box {
+  max-width: 600px;
+}
+
+.q-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #64748b;
+}
+
+.q-text {
+  margin: 18px 0;
+}
+
+.q-answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.q-answer {
+  padding: 14px;
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  font-size: 15px;
+}
+
+.q-answer:hover {
+  background: #e0f2fe;
+  border-color: #0ea5e9;
+}
+
+.results {
+  width: 100%;
+  margin: 16px 0;
+  border-collapse: collapse;
+}
+
+.results th,
+.results td {
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.results .ok {
+  background: #dcfce7;
+}
+
+.results .wrong {
+  background: #fee2e2;
+}

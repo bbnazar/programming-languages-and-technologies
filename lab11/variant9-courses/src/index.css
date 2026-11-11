@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 16px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.desc {
+  margin: 0 0 24px;
+  color: #64748b;
+}
+
+.box {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #0ea5e9;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0284c7;
+}
+
+button:disabled {
+  background: #cbd5e1;
+  cursor: default;
+}
+
+.btn-light {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.btn-light:hover {
+  background: #cbd5e1;
+}
+
+/* ---- вариант 9 ---- */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: #bae6fd;
+}
+
+.card-selected {
+  border-color: #0ea5e9;
+}
+
+.card p {
+  margin: 6px 0;
+  color: #475569;
+}
+
+.card small {
+  color: #94a3b8;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mark {
+  color: #16a34a;
+  font-size: 13px;
+}
+
+.empty {
+  color: #94a3b8;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.info h2 {
+  margin-top: 0;
+}
+
+.info table {
+  margin: 16px 0;
+}
+
+.info td {
+  padding: 4px 12px 4px 0;
+}
+
+.info td:first-child {
+  color: #64748b;
+}
+
+.info-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
