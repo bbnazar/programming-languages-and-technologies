@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Система заметок</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Система заметок</h1>
+    <p id="status" class="status"></p>
+
+    <!-- Форма входа -->
+    <form id="loginForm" class="card">
+      <input id="username" placeholder="Логин" autocomplete="username">
+      <input id="password" type="password" placeholder="Пароль" autocomplete="current-password">
+      <button type="submit">Войти</button>
+    </form>
+
+    <!-- Приватный раздел (виден только после входа) -->
+    <section id="private" class="card" hidden>
+      <p>Вы вошли как: <b id="who"></b> <button id="logout" type="button">Выйти</button></p>
+      <p id="timer" class="timer"></p>
+
+      <form id="noteForm">
+        <input id="noteText" placeholder="Новая заметка">
+        <button type="submit">Добавить</button>
+      </form>
+
+      <ul id="notes" class="list"></ul>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
